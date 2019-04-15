@@ -7,8 +7,24 @@
 		;		Write the result in the provided "fill" word.
 		;		Indicate if there was a high-bit carry using the provided "fill" word.
 		
-		;		Your code here
-		
-numbers	DCD		0b1100101010010001, 0b1111010101000011
-result	FILL		4
-carry	FILL		4
+numbers	DCD		0b1101, 0b1011
+result	FILL	4
+carry	FILL	4
+		ADR		r0, numbers
+		LDR		r1, [r0]
+		LDR		r2, [r0, #4]
+		MOV		r3, #0
+		MOV		r4, #0
+loop	TST		r2, #1
+		BEQ		shift
+		ADDS	r4, r4, r1
+shift	LSR		r2, r2, #1
+		LSL		r3, r3, #1
+		LSLS	r1, r1, #1
+		ADC		r3, r3, #0
+		CMP		r2, #0
+		BGT		loop
+		ADR		r0, result
+		STR		r4, [r0]
+		END
+
