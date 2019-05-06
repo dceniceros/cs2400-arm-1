@@ -5,10 +5,7 @@
 		;		Use the two numbers as an example but write it so it works for any two 16-bit numbers.
 		;		Write the result in the provided "fill" word.
 		;		Indicate if there was a high-bit carry using the provided "fill" word.
-		
-numbers	DCD		0b1100101010010001, 0b1111010101000011
-result	FILL	8
-carry	FILL	4
+
 		ADR		r0, numbers
 		LDR		r1, [r0]
 		LDR		r2, [r0, #4]
@@ -30,3 +27,6 @@ shift	LSR		r2, r2, #1
 		ADR		r0, carry
 		STR		r5, [r0]
 		END
+numbers	DCD		0b1100101010010001, 0b1111010101000011
+result	FILL	8
+carry	FILL	4

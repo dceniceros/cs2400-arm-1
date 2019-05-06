@@ -5,10 +5,7 @@
 		;		Assume you are given the count of array elements.
 		;		Write the number of capitalizations the program performed
 		;		In the caps "fill" memory provided.
-		
-chars	DCD		'a', 'B', '5', 'q', '0', 'O', '1', 's', 'b', 'i', 'G'
-count	DCD		11
-caps	FILL	4
+
 		ADR		r0, chars
 		LDR		r1, [r0]
 		MOV		r3, #4
@@ -27,3 +24,6 @@ work	ADD		r6, r6, #16
 		STR		r4, [r0]
 		SUBS	r5, count, r3
 		BNE		loop
+chars	DCD		'a', 'B', '5', 'q', '0', 'O', '1', 's', 'b', 'i', 'G'
+count	DCD		11
+caps	FILL	4
